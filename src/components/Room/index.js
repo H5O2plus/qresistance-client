@@ -13,7 +13,7 @@ import Captain from '../Captain'
 import Vote from '../Vote'
 import Mission from '../Mission'
 
-const ENDPOINT = 'https://qresistance.herokuapp.com/';
+const ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT || 'http://localhost:5000';
 
 let socket;
 
