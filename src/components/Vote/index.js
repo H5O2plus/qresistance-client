@@ -47,6 +47,26 @@ const Vote = (props) => {
 				</label>{" "}
 				<button type="submit" disabled={hasVoted || !vote}>Submit</button>
 			</form>
+			<h3>Current Votes</h3>
+			<table>
+				<thead>
+					<tr>
+						<th>Agree</th>
+						<th>Disagree</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr key="votes">
+						<td>
+							{room.votes_p.filter(pair => pair.vote === "agree").map(pair => <p>{pair.name}</p>)}
+						</td>
+						<td>
+							{room.votes_p.filter(pair => pair.vote === "disagree").map(pair => <p>{pair.name}</p>)}
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
 		</>
 	);
 };

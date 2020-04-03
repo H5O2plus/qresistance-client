@@ -12,8 +12,9 @@ import Role from '../Role'
 import Captain from '../Captain'
 import Vote from '../Vote'
 import Mission from '../Mission'
+import End from '../End'
 
-const ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT || 'http://localhost:5000';
+const ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT || process.env.REACT_APP_LOCAL_ENDPOINT;
 
 let socket;
 
@@ -62,8 +63,7 @@ const Room = ({ location }) => {
 		return (
 			<>
 				<h1>Room {roomName}</h1>
-				{room.gameState === 4 ? <h1>Winner: RESISTANCE</h1> : null}
-				{room.gameState === 5 ? <h1>Winner: SPIES</h1> : null}
+				{room.gameState === 4 || room.gameState === 5 ? <End room={room} /> : null}
 				<h2>Dashboard</h2>
 				<Role name={name} players={room.players} roles={room.roles} />
 				{room.gameState === 1 && name === room.captain ? <Captain socket={socket} room={room} rule={rule} /> : null}
