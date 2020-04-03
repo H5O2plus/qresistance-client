@@ -38,6 +38,8 @@ const Lobby = () => {
 				</label>
 				<button type="submit">Enter</button>
 			</form>
+			<h2>Nerd Info</h2>
+			<p>Server endpoint: {process.env.REACT_APP_SERVER_ENDPOINT || 'http://localhost:5000'}</p>
 		</div>
 	);
 };
