@@ -57,12 +57,17 @@ const Room = ({ location }) => {
 		});
 	});
 
+	const reload = () => {
+		window.location.reload();
+	};
+
 	if (!isEmpty(willRedirectMsg)) {
 		return <Redirect to={`/error?msg=${willRedirectMsg}`} />
 	} else {
 		return (
 			<>
 				<h1>Room {roomName}</h1>
+				<button onClick={reload}>Reload page (EXPERIMENTAL! May break)</button>
 				{room.gameState === 4 || room.gameState === 5 ? <End room={room} /> : null}
 				<h2>Dashboard</h2>
 				<Role name={name} players={room.players} roles={room.roles} />
