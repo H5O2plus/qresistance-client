@@ -38,6 +38,20 @@ const Lobby = () => {
 				</label>
 				<button type="submit">Enter</button>
 			</form>
+			<h2>Changelog</h2>
+			<h3>2020-04-11</h3>
+			<ul>
+				<li>Audio alert on room update with volume controls</li>
+				<li>Changelog on lobby</li>
+			</ul>
+			<h3>2020-04-07</h3>
+			<ul>
+				<li>Working refresh button</li>
+			</ul>
+			<h3>2020-04-02</h3>
+			<ul>
+				<li>Initial release</li>
+			</ul>
 			<h2>Debug info</h2>
 			<p>Server endpoint: {process.env.REACT_APP_SERVER_ENDPOINT || process.env.REACT_APP_LOCAL_ENDPOINT}</p>
 		</div>

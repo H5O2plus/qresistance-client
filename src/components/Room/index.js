@@ -13,10 +13,12 @@ import Captain from '../Captain'
 import Vote from '../Vote'
 import Mission from '../Mission'
 import End from '../End'
+import VolumeSlider from '../VolumeSlider'
 
 const ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT || process.env.REACT_APP_LOCAL_ENDPOINT;
 
 let socket;
+let alertAudio = new Audio("/sounds/exclaim.m4a");
 
 const Room = ({ location }) => {
 	const [name, setName] = useState('');
@@ -25,6 +27,7 @@ const Room = ({ location }) => {
 	const [rule, setRule] = useState({});
 	const [willRedirectMsg, setWillRedirectMsg] = useState('');
 	const [nameToRemove, setNameToRemove] = useState('');
+	const [alertVolume, setAlertVolume] = useState(0);
 
 	useEffect(() => {
 		const { name, roomName } = queryString.parse(location.search);
@@ -48,6 +51,8 @@ const Room = ({ location }) => {
 		socket.on('roomUpdate', ({ room, rule }) => {
 			setRoom(room);
 			setRule(rule);
+			alertAudio.volume = alertVolume;
+			alertAudio.play();
 		});
 	});
 
@@ -67,13 +72,14 @@ const Room = ({ location }) => {
 		return (
 			<>
 				<h1>Room {roomName}</h1>
-				<button onClick={reload}>Reload page (EXPERIMENTAL! May break)</button>
+				<button onClick={reload}>Reload Page</button>
 				{room.gameState === 4 || room.gameState === 5 ? <End room={room} /> : null}
 				<h2>Dashboard</h2>
 				<Role name={name} players={room.players} roles={room.roles} />
 				{room.gameState === 1 && name === room.captain ? <Captain socket={socket} room={room} rule={rule} /> : null}
 				{room.gameState === 2 ? <Vote name={name} socket={socket} room={room} /> : null}
 				{room.gameState === 3 && room.proposal.includes(name) ? <Mission socket={socket} room={room} name={name} /> : null}
+				<VolumeSlider alertAudioState={[alertVolume, setAlertVolume]} />
 				<h2>Room Information</h2>
 				{room.gameState !== 3 && <p>Last mission's Success : Fail = {room.votes_m} : {room.votes_mt - room.votes_m}</p>}
 				<Scoreboard missions={rule.missions} score={room?.score} />
