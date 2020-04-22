@@ -72,7 +72,7 @@ const Room = ({ location }) => {
 		return (
 			<>
 				<h1>Room {roomName}</h1>
-				<button onClick={reload}>Reload Page</button>
+				<button disabled={!room} onClick={reload}>{room ? "Reload Page" : "Disconnected"}</button>
 				{room.gameState === 4 || room.gameState === 5 ? <End room={room} /> : null}
 				<h2>Dashboard</h2>
 				<Role name={name} players={room.players} roles={room.roles} />
