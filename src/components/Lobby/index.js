@@ -39,6 +39,10 @@ const Lobby = () => {
 				<button type="submit">Enter</button>
 			</form>
 			<h2>Changelog</h2>
+			<h3>2020-04-25</h3>
+			<ul>
+				<li>Experimental support for >10 players (linear regression used to extrapolate existing rules)</li>
+			</ul>
 			<h3>2020-04-11</h3>
 			<ul>
 				<li>Audio alert on room update with volume controls</li>
