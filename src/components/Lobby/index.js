@@ -47,6 +47,7 @@ const Lobby = () => {
 					Source code is available{" "}
 					<a href="https://github.com/starptr/qresistance-client">here</a>.
 				</p>
+				<p>hi mr pham :)))</p>
 				<h2>Changelog</h2>
 				<h3>2020-04-25</h3>
 				<ul>
