@@ -5,3 +5,6 @@
 Play [Resistance](https://en.wikipedia.org/wiki/The_Resistance_(game)) while in quarantine!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Make sure to define the following environmental variables:
+- `REACT_APP_SERVER_ENDPOINT`
